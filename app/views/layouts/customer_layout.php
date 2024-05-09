@@ -27,7 +27,7 @@
 		$this->render($content, $sub_content);
 		$this->render('blocks/customer/footer');
 	?>
-   
+
 	<!-- Latest jQuery form server -->
 	<script src="https://code.jquery.com/jquery.min.js"></script>
 	

@@ -43,11 +43,11 @@
 			</div> 
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="index">Home</a></li>
-					<li><a href="shop">Shop page</a></li>
-					<li><a href="single_product">Single product</a></li>
-					<li><a href="cart">Cart</a></li>
-					<li><a href="checkout">Checkout</a></li>
+					<li><a href="trang-chu">Home</a></li>
+					<li><a href="cua-hang">Shop page</a></li>
+					<li><a href="san-pham">Single product</a></li>
+					<li><a href="gio-hang">Cart</a></li>
+					<li><a href="thanh-toan">Checkout</a></li>
 				</ul>
 			</div>  
 		</div>

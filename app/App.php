@@ -52,8 +52,11 @@ class App {
 				if(!empty($urlArr[$key-1])) {
 					unset($urlArr[$key-1]);
 				}
-				if(file_exists('app/controllers/'.$fileCheck.'.php')) {
-					$urlCheck = $fileCheck;
+				if(file_exists('app/controllers/customer/'.$fileCheck.'.php')) {
+					$urlCheck = 'customer/'.$fileCheck;
+					break;
+				} elseif (file_exists('app/controllers/admin/'.$fileCheck.'.php')) {
+					$urlCheck = 'admin/'.$fileCheck;
 					break;
 				}
 			}
@@ -70,7 +73,7 @@ class App {
 
 		// Xử lý khi $urlCheck rỗng
 		if(empty($urlCheck)) {
-			$urlCheck = $this->__controller;
+			$urlCheck = "customer/".$this->__controller;
 		}
 
 		if(file_exists('app/controllers/'.$urlCheck.'.php')) {
