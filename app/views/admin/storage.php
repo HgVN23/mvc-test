@@ -41,7 +41,7 @@
 					</tfoot>
 					<tbody>
 						<?php
-							foreach($list as $row) {
+							foreach($listItem as $row) {
 								echo '
 									<tr>
 										<td>'.$row["id_phone"].'</td>
@@ -53,14 +53,16 @@
 										<td>'.$row["quantity"].'</td>
 										<td>
 											<div class="d-flex justify-content-around text-nowrap" style="gap: .5rem;">
-												<a class="btn btn-primary" href="">
+												<form action="'._WEB_ROOT.'/quan-tri/delete_storage" method="POST">
+													<button class="btn btn-danger" name="remove" value="'.$row["id_phone"].'">
+														<i class="fa fa-trash"></i>
+														Loại bỏ
+													</button>
+												</form>
+												<button class="btn btn-primary">
 													<i class="fa fa-pen"></i>
 													Cập nhật
-												</a>
-												<a class="btn btn-danger" href="">
-													<i class="fa fa-trash"></i>
-													Loại bỏ
-												</a>
+												</button>
 											</div>
 										</td>
 									</tr>
@@ -72,11 +74,11 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Modal -->
 	<div class="modal fade" id="modalAdd" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div class="modal-dialog modal-xl modal-dialog-centered">
-			<form class="modal-content" action="" method="GET">
+			<form class="modal-content" action="<?php echo _WEB_ROOT; ?>/quan-tri/insert_storage" method="POST">
 				<div class="modal-header">
 					<h5 class="modal-title" id="staticBackdropLabel">Thông tin sản phẩm</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -86,8 +88,8 @@
 				<div class="modal-body row mt-2">
 					<div class="col-lg-4 d-flex flex-column gap-2">
 						<div>
-							<label for="cover" class="form-label">Ảnh</label>
-							<input class="form-control" type="file" id="cover" name="cover" accept="image/*">
+							<label for="img" class="form-label">Ảnh</label>
+							<input class="form-control" type="file" id="img" name="img" accept="image/*">
 						</div>
 						<div class="cover border mb-2 align-self-center d-flex justify-content-center text-center">
 							<img id="coverPreview" class="align-self-center" src="https://cdn.discordapp.com/attachments/677761423870525442/1222854468450910298/coverNull.png?ex=662a2ff8&is=6617baf8&hm=8f4daee9b077736301afeb4f726fd0dcc5bc5a2b00b1b6e61c5d3348b625d316&">
@@ -97,15 +99,22 @@
 						<div class="row">
 							<div class="col-lg-2 my-1">
 								<label for="id_phone" class="form-label">Mã</label>
-								<input type="number" class="form-control bg-primary-subtle" id="id_phone" name="id_phone" value="" placeholder="..." readonly>
+								<input type="number" class="form-control bg-primary-subtle" id="id_phone" name="id_phone" value="<?php echo $idMax[0]["max"] + 1; ?>" placeholder="..." readonly>
 							</div>
 							<div class="col-lg-5 my-1">
 								<label for="title" class="form-label">Tên</label>
 								<input type="text" class="form-control" id="title" name="title" value="" placeholder="..." required>
 							</div>
 							<div class="col-lg-5 my-1">
-								<label for="brand" class="form-label">Thương hiệu</label>
-								<input type="text" class="form-control" id="brand" name="brand" value="" placeholder="..." required>
+								<label for="id_brand" class="form-label">Thương hiệu</label>
+								<select class="form-control" id="id_brand" name="id_brand" required>
+									<option selected disabled>...</option>
+									<?php
+										foreach($listBrand as $option) {
+											echo '<option value="'.$option["id_brand"].'">'.$option["name"].'</option>';
+										}
+									?>
+								</select>
 							</div>
 							<div class="col-lg-12 my-1">
 								<label for="info" class="form-label">Thông tin</label>
@@ -115,12 +124,14 @@
 								<label for="price" class="form-label">Đơn giá</label>
 								<div class="input-group">
 									<input type="number" class="form-control" id="price" name="price" value="100000" placeholder="..." required>
-									<span class="input-group-text">đ</span>
+									<div class="input-group-prepend">
+										<div class="input-group-text">đ</div>
+									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 my-1">
 								<label for="quantity" class="form-label">Số lượng</label>
-								<input type="number" class="form-control" id="quantity" name="quantity" value="1" placeholder="..." required>
+								<input type="number" class="form-control" id="quantity" name="quantity" value="1" placeholder="..." min="0" required>
 							</div>
 						</div>
 					</div>

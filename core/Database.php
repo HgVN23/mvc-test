@@ -62,9 +62,9 @@ class Database {
 	function deleteData($table, $condition = '') {
 		if(!empty($condition)){
 			$sql = 'DELETE FROM '.$table.' WHERE '.$condition;
-		} else{
+		} /*else{
 			$sql = 'DELETE FROM '.$table;
-		}
+		}*/
 
 		$status = $this->query($sql);
 
