@@ -35,6 +35,14 @@ class Dashboard extends Controller {
 		$response->redirect('quan-tri/storage');
 	}
 
+	public function update_storage() {
+		$request = new Request();
+		$this->model_dashboard->editItem();
+
+		$response = new Response();
+		$response->redirect('quan-tri/storage');
+	}
+
 	public function delete_storage() {
 		$request = new Request();
 		$this->model_dashboard->removeItem();
@@ -42,6 +50,11 @@ class Dashboard extends Controller {
 		$response = new Response();
 		$response->redirect('quan-tri/storage');
 	}
+
+	/*public function display_img($id = 1) {
+		$request = new Request();
+		$this->model_dashboard->displayImg($id);
+	}*/
 }
 
 ?>

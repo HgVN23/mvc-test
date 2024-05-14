@@ -8,7 +8,7 @@ class DashboardModel extends Model {
 	}
 
 	function fieldFill() {
-		return 'id_phone, img, title, info, price, quantity, id_brand';
+		return 'id_phone, img, title, id_brand, info, price, quantity';
 	}
 
 	function primaryKey() {
@@ -22,8 +22,8 @@ class DashboardModel extends Model {
 
 	public function loadItem() {
 		$data = $this->db->table($this->__table)
-			->select('phone.id_phone, phone.img, phone.title, phone.info, phone.price, phone.quantity, brand.name')
-			->join('brand', 'phone.id_brand = brand.id_brand')
+			->select('phone.id_phone, phone.img, phone.title, phone.id_brand, phone.info, phone.price, phone.quantity, brand.name')
+			->innerJoin('brand', 'phone.id_brand = brand.id_brand')
 			->get();
 		return $data;
 	}
@@ -35,13 +35,33 @@ class DashboardModel extends Model {
 
 	public function addItem() {
 		$request = new Request();
-		$this->db->insertData($this->__table, $request->getFields());
+
+		$this->db->table($this->__table)
+			->insert($request->getFields());
 	}
 
 	public function removeItem() {
 		$request = new Request();
-		$this->db->deleteData($this->__table, 'id_phone = '.$request->getFields()["remove"]);
+		$this->db->table($this->__table)
+			->where('id_phone', '=', $request->getFields()["remove"])
+			->delete();
 	}
+
+	public function editItem() {
+		$request = new Request();
+		$data = $request->getFields();
+		$this->db->table($this->__table)
+			->where('id_phone', '=', $data["id_phone"])
+			->update($data);
+	}
+
+	/*public function displayImg($id) {
+		$data = $this->db->table($this->__table)
+			->select('img')
+			->where('id_phone', '=', $id)
+			->get();
+		echo $data[0]["img"];
+	}*/
 }
 
 ?>

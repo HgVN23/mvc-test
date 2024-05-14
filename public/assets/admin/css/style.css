@@ -1,0 +1,23 @@
+.mainForm {
+	.img {
+		width: 230px;
+		height: 230px;
+
+		#imgPreview {
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+}
+.card {
+	.img {
+		width: 190px;
+		height: 190px;
+		text-align: center;
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+}

@@ -4,9 +4,9 @@
 			<div class="col-md-8">
 				<div class="user-menu">
 					<ul>
-						<li><a href="cart"><i class="fa fa-user"></i>My Cart</a></li>
-						<li><a href="checkout"><i class="fa fa-user"></i>Checkout</a></li>
-						<li><a href="#"><i class="fa fa-user"></i>Login</a></li>
+						<li><a href="cart"><i class="fa fa-user"></i>Giỏ hàng</a></li>
+						<li><a href="checkout"><i class="fa fa-user"></i>Hóa đơn</a></li>
+						<li><a href="#"><i class="fa fa-user"></i>Đăng nhập</a></li>
 					</ul>
 				</div>
 			</div>
@@ -43,11 +43,11 @@
 			</div> 
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="trang-chu">Home</a></li>
-					<li><a href="cua-hang">Shop page</a></li>
-					<li><a href="san-pham">Single product</a></li>
-					<li><a href="gio-hang">Cart</a></li>
-					<li><a href="thanh-toan">Checkout</a></li>
+					<li><a href="<?php echo _WEB_ROOT ?>/trang-chu">Home</a></li>
+					<li><a href="<?php echo _WEB_ROOT ?>/cua-hang">Shop page</a></li>
+					<li><a href="<?php echo _WEB_ROOT ?>/cua-hang/single_product">Single product</a></li>
+					<li><a href="<?php echo _WEB_ROOT ?>/gio-hang">Cart</a></li>
+					<li><a href="<?php echo _WEB_ROOT ?>/thanh-toan">Checkout</a></li>
 				</ul>
 			</div>  
 		</div>

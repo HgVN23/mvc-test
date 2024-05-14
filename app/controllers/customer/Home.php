@@ -1,15 +1,16 @@
 <?php
 
 class Home extends Controller {
-	// public $model_home;
+	public $model_home;
 	public $data = [];
 
 	public function __construct() {
-		// $this->model_home = $this->model('HomeModel');
+		$this->model_home = $this->model('HomeModel');
 	}
 
 	public function index() {
 		$this->data['sub_content']['title'] = 'Trang chủ';
+		$this->data['sub_content']['listItem'] = $this->model_home->loadItem();
 		$this->data['page_title'] = 'Trang chủ';
 		$this->data['content'] = 'customer/home';
 		

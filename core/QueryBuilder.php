@@ -90,11 +90,6 @@ trait QueryBuilder {
 		return $this;
 	}
 
-	public function join($tableName, $relationship) {
-		$this->join .= 'JOIN '.$tableName.' ON '.$relationship.' ';
-		return $this;
-	}
-
 	public function insert($data) {
 		$tableName = $this->tableName;
 		$insertStatus = $this->insertData($tableName, $data);

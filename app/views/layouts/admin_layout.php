@@ -16,6 +16,7 @@
 
 	<!-- Custom styles for this page -->
 	<link href="<?php echo _WEB_ROOT ?>/public/assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+	<link href="<?php echo _WEB_ROOT ?>/public/assets/admin/css/style.css" rel="stylesheet">
 </head>
 <body id="page-top">
 

@@ -44,13 +44,17 @@
 							foreach($listItem as $row) {
 								echo '
 									<tr>
-										<td>'.$row["id_phone"].'</td>
-										<td>'.$row["img"].'</td>
+										<td class="text-center">'.$row["id_phone"].'</td>
+										<td>
+											<div class="img mx-auto">
+												<img src="'._WEB_ROOT.'/public/assets/img/'.$row["img"].'">
+											</div>
+										</td>
 										<td>'.$row["title"].'</td>
-										<td>'.$row["name"].'</td>
+										<td data-brand="'.$row["id_brand"].'">'.$row["name"].'</td>
 										<td>'.$row["info"].'</td>
-										<td>'.$row["price"].'</td>
-										<td>'.$row["quantity"].'</td>
+										<td class="text-center">'.$row["price"].'</td>
+										<td class="text-center">'.$row["quantity"].'</td>
 										<td>
 											<div class="d-flex justify-content-around text-nowrap" style="gap: .5rem;">
 												<form action="'._WEB_ROOT.'/quan-tri/delete_storage" method="POST">
@@ -59,7 +63,7 @@
 														Loại bỏ
 													</button>
 												</form>
-												<button class="btn btn-primary">
+												<button class="btn btn-primary" data-toggle="modal" data-target="#modalAdd" onclick="editBook(this.closest(\'tr\'))">
 													<i class="fa fa-pen"></i>
 													Cập nhật
 												</button>
@@ -78,10 +82,10 @@
 	<!-- Modal -->
 	<div class="modal fade" id="modalAdd" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div class="modal-dialog modal-xl modal-dialog-centered">
-			<form class="modal-content" action="<?php echo _WEB_ROOT; ?>/quan-tri/insert_storage" method="POST">
+			<form class="mainForm modal-content" action="<?php echo _WEB_ROOT; ?>/quan-tri/insert_storage" method="POST">
 				<div class="modal-header">
 					<h5 class="modal-title" id="staticBackdropLabel">Thông tin sản phẩm</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close resetForm" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
@@ -91,8 +95,8 @@
 							<label for="img" class="form-label">Ảnh</label>
 							<input class="form-control" type="file" id="img" name="img" accept="image/*">
 						</div>
-						<div class="cover border mb-2 align-self-center d-flex justify-content-center text-center">
-							<img id="coverPreview" class="align-self-center" src="https://cdn.discordapp.com/attachments/677761423870525442/1222854468450910298/coverNull.png?ex=662a2ff8&is=6617baf8&hm=8f4daee9b077736301afeb4f726fd0dcc5bc5a2b00b1b6e61c5d3348b625d316&">
+						<div class="img border mt-2 align-self-center d-flex justify-content-center text-center">
+							<img id="imgPreview" class="align-self-center" src="">
 						</div>
 					</div>
 					<div class="col-lg-8">
@@ -137,7 +141,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="reset" class="btn btn-danger">
+					<button type="reset" class="btn btn-danger resetForm">
 						<i class="fa fa-redo"></i>
 						Làm mới
 					</button>
