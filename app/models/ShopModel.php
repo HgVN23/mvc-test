@@ -30,6 +30,23 @@ class ShopModel extends Model {
 			->get();
 		return $data;
 	}
+
+	public function loadCart() {
+		$data = $this->db->table('cart')
+			->select('cart.id_phone, phone.id_phone, phone.img, phone.title, phone.price, phone.quantity')
+			->innerJoin('phone', 'cart.id_phone = phone.id_phone')
+			->get();
+		return $data;
+	}
+
+	public function addCart($id) {
+		$data = [
+			"id_customer" => 1,
+			"id_phone" => $id,
+			"quantity" => 1
+		];
+		$this->db->table('cart')->insert($data);
+	}
 }
 
 ?>

@@ -3,70 +3,17 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="product-bit-title text-center">
-					<h2>Shopping Cart</h2>
+					<h2>Thanh toán</h2>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <div class="single-product-area">
-	<div class="zigzag-bottom"></div>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4">
-				<div class="single-sidebar">
-					<h2 class="sidebar-title">Search Products</h2>
-					<form action="">
-						<input type="text" placeholder="Search products...">
-						<input type="submit" value="Search">
-					</form>
-				</div>
-				
-				<div class="single-sidebar">
-					<h2 class="sidebar-title">Products</h2>
-					<div class="thubmnail-recent">
-						<img src="<?php echo _WEB_ROOT ?>/public/assets/customer/img/product-thumb-1.jpg" class="recent-thumb" alt="">
-						<h2><a href="single-product">Sony Smart TV - 2015</a></h2>
-						<div class="product-sidebar-price">
-							<ins>$700.00</ins> <del>$100.00</del>
-						</div>
-					</div>
-					<div class="thubmnail-recent">
-						<img src="<?php echo _WEB_ROOT ?>/public/assets/customer/img/product-thumb-1.jpg" class="recent-thumb" alt="">
-						<h2><a href="single-product">Sony Smart TV - 2015</a></h2>
-						<div class="product-sidebar-price">
-							<ins>$700.00</ins> <del>$100.00</del>
-						</div>
-					</div>
-					<div class="thubmnail-recent">
-						<img src="<?php echo _WEB_ROOT ?>/public/assets/customer/img/product-thumb-1.jpg" class="recent-thumb" alt="">
-						<h2><a href="single-product">Sony Smart TV - 2015</a></h2>
-						<div class="product-sidebar-price">
-							<ins>$700.00</ins> <del>$100.00</del>
-						</div>
-					</div>
-					<div class="thubmnail-recent">
-						<img src="<?php echo _WEB_ROOT ?>/public/assets/customer/img/product-thumb-1.jpg" class="recent-thumb" alt="">
-						<h2><a href="single-product">Sony Smart TV - 2015</a></h2>
-						<div class="product-sidebar-price">
-							<ins>$700.00</ins> <del>$100.00</del>
-						</div>
-					</div>
-				</div>
-				
-				<div class="single-sidebar">
-					<h2 class="sidebar-title">Recent Posts</h2>
-					<ul>
-						<li><a href="single-product">Sony Smart TV - 2015</a></li>
-						<li><a href="single-product">Sony Smart TV - 2015</a></li>
-						<li><a href="single-product">Sony Smart TV - 2015</a></li>
-						<li><a href="single-product">Sony Smart TV - 2015</a></li>
-						<li><a href="single-product">Sony Smart TV - 2015</a></li>
-					</ul>
-				</div>
-			</div>
 			
-			<div class="col-md-8">
+			<div class="col-md-12">
 				<div class="product-content-right">
 					<div class="woocommerce">
 						<div class="woocommerce-info">Returning customer? <a class="showlogin" data-toggle="collapse" href="#login-form-wrap" aria-expanded="false" aria-controls="login-form-wrap">Click here to login</a>
@@ -101,22 +48,6 @@
 							<div class="clear"></div>
 						</form>
 
-						<div class="woocommerce-info">Have a coupon? <a class="showcoupon" data-toggle="collapse" href="#coupon-collapse-wrap" aria-expanded="false" aria-controls="coupon-collapse-wrap">Click here to enter your code</a>
-						</div>
-
-						<form id="coupon-collapse-wrap" method="post" class="checkout_coupon collapse">
-
-							<p class="form-row form-row-first">
-								<input type="text" value="" id="coupon_code" placeholder="Coupon code" class="input-text" name="coupon_code">
-							</p>
-
-							<p class="form-row form-row-last">
-								<input type="submit" value="Apply Coupon" name="apply_coupon" class="button">
-							</p>
-
-							<div class="clear"></div>
-						</form>
-
 						<form enctype="multipart/form-data" action="#" class="checkout" method="post" name="checkout">
 
 							<div id="customer_details" class="col2-set">
@@ -124,7 +55,8 @@
 									<div class="woocommerce-billing-fields">
 										<h3>Billing Details</h3>
 										<p id="billing_country_field" class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
-											<label class="" for="billing_country">Country <abbr title="required" class="required">*</abbr>
+											<label class="" for="billing_country">Country 
+												<abbr title="required" class="required">*</abbr>
 											</label>
 											<select class="country_to_state country_select" id="billing_country" name="billing_country">
 												<option value="">Select a country…</option>
@@ -753,12 +685,7 @@
 
 											<div class="clear"></div>
 
-
 										</div>
-
-
-
-
 
 										<p id="order_comments_field" class="form-row notes">
 											<label class="" for="order_comments">Order Notes</label>
@@ -835,7 +762,8 @@
 										</li>
 										<li class="payment_method_paypal">
 											<input type="radio" data-order_button_text="Proceed to PayPal" value="paypal" name="payment_method" class="input-radio" id="payment_method_paypal">
-											<label for="payment_method_paypal">PayPal <img alt="PayPal Acceptance Mark" src="https://www.paypalobjects.com/webstatic/mktg/Logo/AM_mc_vs_ms_ae_UK.png"><a title="What is PayPal?" onclick="javascript:window.open('https://www.paypal.com/gb/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;" class="about_paypal" href="https://www.paypal.com/gb/webapps/mpp/paypal-popup">What is PayPal?</a>
+											<label for="payment_method_paypal">PayPal 
+												<img alt="PayPal Acceptance Mark" src="https://www.paypalobjects.com/webstatic/mktg/Logo/AM_mc_vs_ms_ae_UK.png">
 											</label>
 											<div style="display:none;" class="payment_box payment_method_paypal">
 												<p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>

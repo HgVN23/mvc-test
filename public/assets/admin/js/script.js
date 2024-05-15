@@ -7,13 +7,13 @@ function orderDesc() {
 
 // Khởi tạo
 const form = document.querySelector('.mainForm');
-const idInput = document.querySelector('#id_phone');
-const imgInput = document.querySelector('#imgPreview');
-const titleInput = document.querySelector('#title');
-const brandInput = document.querySelector('#id_brand');
-const infoInput = document.querySelector('#info');
-const priceInput = document.querySelector('#price');
-const quantityInput = document.querySelector('#quantity');
+const idInput = form.querySelector('#id_phone');
+const imgInput = form.querySelector('#imgPreview');
+const titleInput = form.querySelector('#title');
+const brandInput = form.querySelector('#id_brand');
+const infoInput = form.querySelector('#info');
+const priceInput = form.querySelector('#price');
+const quantityInput = form.querySelector('#quantity');
 
 // Preview ảnh khi input
 if(document.querySelector('input#img')) {
@@ -42,7 +42,7 @@ function resetForm() {
 function editBook(tr) {
 	idInput.value = tr.querySelector('td:nth-child(1)').textContent;
 	imgInput.src = tr.querySelector('img').src;
-	// imgInput.closest('.row').querySelector('#cover').value = tr.querySelector('img').src;
+	imgInput.closest('.row').querySelector('#cover').value = tr.querySelector('img').src;
 	titleInput.value = tr.querySelector('td:nth-child(3)').textContent;
 	brandInput.options[parseInt(tr.querySelector('td:nth-child(4)').getAttribute('data-brand'))].selected = true;
 	infoInput.value = tr.querySelector('td:nth-child(5)').textContent;

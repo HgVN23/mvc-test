@@ -3,25 +3,24 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="product-bit-title text-center">
-					<h2>Cửa hàng</h2>
+					<h2>Sản phẩm</h2>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <div class="single-product-area">
-	<div class="zigzag-bottom"></div>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4"></div>
+			<div class="col-md-2"></div>
 			
-			<div class="col-md-8">
+			<div class="col-md-10">
 				<div class="product-content-right">
 					
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="product-images">
-								<div class="product-main-img">
+								<div class="product-main-img img2">
 									<img src="<?php echo _WEB_ROOT ?>/public/assets/img/<?php echo $item[0]["img"] ?>">
 								</div>
 							</div>

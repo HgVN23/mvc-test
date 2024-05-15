@@ -43,11 +43,10 @@
 			</div> 
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="<?php echo _WEB_ROOT ?>/trang-chu">Home</a></li>
-					<li><a href="<?php echo _WEB_ROOT ?>/cua-hang">Shop page</a></li>
-					<li><a href="<?php echo _WEB_ROOT ?>/cua-hang/single_product">Single product</a></li>
-					<li><a href="<?php echo _WEB_ROOT ?>/gio-hang">Cart</a></li>
-					<li><a href="<?php echo _WEB_ROOT ?>/thanh-toan">Checkout</a></li>
+					<li><a href="<?php echo _WEB_ROOT ?>/trang-chu">Trang chủ</a></li>
+					<li><a href="<?php echo _WEB_ROOT ?>/cua-hang">Cửa hàng</a></li>
+					<li><a href="<?php echo _WEB_ROOT ?>/cua-hang/cart">Giỏ hàng</a></li>
+					<li><a href="<?php echo _WEB_ROOT ?>/cua-hang/checkout">Thanh toán</a></li>
 				</ul>
 			</div>  
 		</div>

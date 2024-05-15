@@ -25,6 +25,33 @@ class Shop extends Controller {
 		
 		$this->render('layouts/customer_layout', $this->data);
 	}
+
+	public function cart() {
+		$this->data['sub_content']['title'] = 'Trang Giỏ hàng';
+		$this->data['sub_content']['listItem'] = $this->model_shop->loadCart();
+		$this->data['page_title'] = 'Trang Giỏ hàng';
+		$this->data['content'] = 'customer/cart';
+		
+		$this->render('layouts/customer_layout', $this->data);
+	}
+
+	public function checkout() {
+		$this->data['sub_content']['title'] = 'Trang Thanh toán';
+		$this->data['sub_content']['listItem'] = $this->model_shop->loadCart();
+		$this->data['page_title'] = 'Trang Thanh toán';
+		$this->data['content'] = 'customer/checkout';
+		
+		$this->render('layouts/customer_layout', $this->data);
+	}
+
+
+	public function insert_cart($id) {
+		$request = new Request();
+		$this->model_shop->addCart($id);
+
+		$response = new Response();
+		$response->redirect('cua-hang/single_product/'.$id);
+	}
 }
 
 ?>

@@ -20,6 +20,7 @@
 	<link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/public/assets/customer/css/owl.carousel.css">
 	<link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/public/assets/customer/css/style.css">
 	<link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/public/assets/customer/css/responsive.css">
+	<link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/public/assets/customer/css/custom.css">
 </head>
 <body>
 	<?php
@@ -47,5 +48,8 @@
 	<!-- Slider -->
 	<script src="<?php echo _WEB_ROOT ?>/public/assets/customer/js/bxslider.min.js"></script>
 	<script src="<?php echo _WEB_ROOT ?>/public/assets/customer/js/script.slider.js"></script>
+
+	<!-- Custom -->
+	<script src="<?php echo _WEB_ROOT ?>/public/assets/customer/js/script.js"></script>
 </body>
 </html>

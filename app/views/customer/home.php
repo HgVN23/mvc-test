@@ -43,7 +43,6 @@
 </div>
 
 <div class="promo-area">
-	<div class="zigzag-bottom"></div>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3 col-sm-6">
@@ -88,7 +87,7 @@
 										<div class="product-f-image">
 											<img src="'._WEB_ROOT.'/public/assets/img/'.$item["img"].'">
 											<div class="product-hover">
-												<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
+												<a href="'._WEB_ROOT.'/cua-hang/insert_cart/'.$item["id_phone"].'" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
 												<a href="'._WEB_ROOT.'/cua-hang/single_product/'.$item["id_phone"].'" class="view-details-link"><i class="fa fa-link"></i> Xem chi tiết</a>
 											</div>
 										</div>
