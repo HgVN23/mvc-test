@@ -82,12 +82,32 @@
 					<div class="product-carousel">
 						<?php
 							foreach($listItem as $item) {
+								$check = false;
+								foreach($cart as $itemC) {
+									if($itemC["id_phone"] == $item["id_phone"]) {
+										$check = true;
+										break;
+									}
+								}
+								if(!$check) {
+									$action = 'insert_cart/'.$item["id_phone"];
+									$button = '<button style="all: unset; cursor: pointer;">Thêm vào giỏ</button>';
+								} else {
+									$action = 'delete_cart';
+									$button = '<button style="all: unset; cursor: pointer;" name="remove" value="'.$item["id_phone"].'">Xóa khỏi giỏ</button>';
+								}
+
 								echo '
 									<div class="single-product">
 										<div class="product-f-image">
 											<img src="'._WEB_ROOT.'/public/assets/img/'.$item["img"].'">
 											<div class="product-hover">
-												<a href="'._WEB_ROOT.'/cua-hang/insert_cart/'.$item["id_phone"].'" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
+												<form action="'._WEB_ROOT.'/cua-hang/'.$action.'" method="POST">
+													<a class="add-to-cart-link">
+														<i class="fa fa-shopping-cart"></i>
+														'.$button.'
+													</a>
+												</form>
 												<a href="'._WEB_ROOT.'/cua-hang/single_product/'.$item["id_phone"].'" class="view-details-link"><i class="fa fa-link"></i> Xem chi tiết</a>
 											</div>
 										</div>

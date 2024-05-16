@@ -33,7 +33,7 @@ class ShopModel extends Model {
 
 	public function loadCart() {
 		$data = $this->db->table('cart')
-			->select('cart.id_phone, phone.id_phone, phone.img, phone.title, phone.price, phone.quantity')
+			->select('cart.id_phone, cart.c_quantity, phone.id_phone, phone.img, phone.title, phone.price, phone.quantity')
 			->innerJoin('phone', 'cart.id_phone = phone.id_phone')
 			->get();
 		return $data;
@@ -43,9 +43,48 @@ class ShopModel extends Model {
 		$data = [
 			"id_customer" => 1,
 			"id_phone" => $id,
-			"quantity" => 1
+			"c_quantity" => 1
 		];
 		$this->db->table('cart')->insert($data);
+	}
+
+	public function removeCart() {
+		$request = new Request();
+		$this->db->table('cart')
+			->where('id_phone', '=', $request->getFields()["remove"])
+			->delete();
+	}
+
+	public function editCart($data) {
+		$this->db->table('cart')
+			->where('id_phone', '=', $data["id_phone"])
+			->update($data);
+	}
+
+	public function count() {
+		$data = $this->db->table('cart')
+			->select('COUNT(*) as result')
+			->where('id_customer', '=', 1)
+			->get();
+		return $data;
+	}
+
+	public function getMax() {
+		$data = $this->db->table('checkout')->select('max(id_checkout) as max')->get();
+		if($data[0]["max"] == NULL) 
+			$data[0]["max"] = 0;
+		return $data;
+	}
+
+	public function addCheckout($data) {
+		$max = $this->getMax()[0]["max"] + 1;
+		foreach($data as $item) {
+			$item["id_checkout"] = $max;
+			$item["total"] = $item["price"]*$item["c_quantity"];
+			$item["status"] = 'Đang xử lý';
+			// Cắt array hay j đó ở đây....
+			$this->db->table('checkout')->insert($item);
+		}
 	}
 }
 

@@ -14,6 +14,21 @@
 		<div class="row">
 			<?php
 				foreach($listItem as $item) {
+					$check = false;
+					foreach($cart as $itemC) {
+						if($itemC["id_phone"] == $item["id_phone"]) {
+							$check = true;
+							break;
+						}
+					}
+					if(!$check) {
+						$action = 'insert_cart/'.$item["id_phone"];
+						$button = '<button style="all: unset; cursor: pointer;">Thêm vào giỏ</button>';
+					} else {
+						$action = 'delete_cart';
+						$button = '<button style="all: unset; cursor: pointer;" name="remove" value="'.$item["id_phone"].'">Xóa khỏi giỏ</button>';
+					}
+
 					echo '
 						<div class="col-md-3 col-sm-6">
 							<div class="single-shop-product">
@@ -25,7 +40,12 @@
 									<ins>'.$item["price"].'</ins>
 								</div>  						
 								<div class="product-option-shop">
-									<a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="'.$item["id_phone"].'" rel="nofollow" href="'._WEB_ROOT.'/cua-hang/cart/'.$item["id_phone"].'">Thêm vào giỏ</a>
+									<form action="'._WEB_ROOT.'/cua-hang/'.$action.'" method="POST">
+										<a class="add_to_cart_button">
+											<i class="fa fa-shopping-cart"></i>
+											'.$button.'
+										</a>
+									</form>
 								</div>
 							</div>
 						</div>

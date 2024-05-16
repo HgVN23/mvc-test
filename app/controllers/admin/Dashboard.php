@@ -28,7 +28,6 @@ class Dashboard extends Controller {
 	}
 
 	public function insert_storage() {
-		$request = new Request();
 		$this->model_dashboard->addItem();
 
 		$response = new Response();
@@ -36,7 +35,6 @@ class Dashboard extends Controller {
 	}
 
 	public function update_storage() {
-		$request = new Request();
 		$this->model_dashboard->editItem();
 
 		$response = new Response();
@@ -44,7 +42,6 @@ class Dashboard extends Controller {
 	}
 
 	public function delete_storage() {
-		$request = new Request();
 		$this->model_dashboard->removeItem();
 
 		$response = new Response();
@@ -52,7 +49,6 @@ class Dashboard extends Controller {
 	}
 
 	/*public function display_img($id = 1) {
-		$request = new Request();
 		$this->model_dashboard->displayImg($id);
 	}*/
 }

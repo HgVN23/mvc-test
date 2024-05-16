@@ -4,8 +4,7 @@
 			<div class="col-md-8">
 				<div class="user-menu">
 					<ul>
-						<li><a href="cart"><i class="fa fa-user"></i>Giỏ hàng</a></li>
-						<li><a href="checkout"><i class="fa fa-user"></i>Hóa đơn</a></li>
+						<li><a href="<?php echo _WEB_ROOT ?>/cua-hang/order_history"><i class="fa fa-user"></i>Lịch sử đặt hàng</a></li>
 						<li><a href="#"><i class="fa fa-user"></i>Đăng nhập</a></li>
 					</ul>
 				</div>
@@ -24,7 +23,10 @@
 			
 			<div class="col-sm-6">
 				<div class="shopping-item">
-					<a href="cart">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+					<a href="<?php echo _WEB_ROOT ?>/cua-hang/cart">Giỏ hàng
+						<i class="fa fa-shopping-cart"></i>
+						<span class="product-count"><?php echo $count[0]["result"]; ?></span>
+					</a>
 				</div>
 			</div>
 		</div>

@@ -33,15 +33,12 @@
 									<ins><?php echo $item[0]["price"] ?></ins>
 								</div>    
 								
-								<form action="" class="cart">
-									<div class="quantity">
-										<input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-									</div>
-									<button class="add_to_cart_button" type="submit">Add to cart</button>
+								<form action="<?php echo _WEB_ROOT ?>/cua-hang/insert_cart/<?php echo $item[0]["id_phone"] ?>" class="cart">
+									<button class="add_to_cart_button" type="submit">Thêm vào giỏ</button>
 								</form>   
 								
 								<div class="product-inner-category">
-									<p>Category: <a href=""><?php echo $item[0]["name"] ?></a></p>
+									<p>Thương hiệu: <a href=""><?php echo $item[0]["name"] ?></a></p>
 								</div> 
 								
 								<div role="tabpanel">

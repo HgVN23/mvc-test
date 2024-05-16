@@ -38,11 +38,9 @@ function resetForm() {
 	form.querySelector('button[type="reset"]').click();
 }
 
-//Chỉnh sửa Book
-function editBook(tr) {
+function editProduct(tr) {
 	idInput.value = tr.querySelector('td:nth-child(1)').textContent;
 	imgInput.src = tr.querySelector('img').src;
-	imgInput.closest('.row').querySelector('#cover').value = tr.querySelector('img').src;
 	titleInput.value = tr.querySelector('td:nth-child(3)').textContent;
 	brandInput.options[parseInt(tr.querySelector('td:nth-child(4)').getAttribute('data-brand'))].selected = true;
 	infoInput.value = tr.querySelector('td:nth-child(5)').textContent;
@@ -50,4 +48,9 @@ function editBook(tr) {
 	quantityInput.value = tr.querySelector('td:nth-child(7)').textContent;
 	
 	form.action = form.action.replace('insert_storage', 'update_storage');
+}
+
+function removeProduct(id) {
+	document.querySelector('#idProduct').innerHTML = id.value;
+	document.querySelector('button[name="remove"]').value = id.value;
 }

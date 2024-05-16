@@ -24,7 +24,7 @@
 </head>
 <body>
 	<?php
-		$this->render('blocks/customer/header');
+		$this->render('blocks/customer/header', $sub_content);
 		$this->render($content, $sub_content);
 		$this->render('blocks/customer/footer');
 	?>

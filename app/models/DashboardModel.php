@@ -42,6 +42,9 @@ class DashboardModel extends Model {
 
 	public function removeItem() {
 		$request = new Request();
+		$this->db->table('cart')
+			->where('id_phone', '=', $request->getFields()["remove"])
+			->delete();
 		$this->db->table($this->__table)
 			->where('id_phone', '=', $request->getFields()["remove"])
 			->delete();

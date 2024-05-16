@@ -21,6 +21,22 @@ class HomeModel extends Model {
 			->get();
 		return $data;
 	}
+
+	public function count() {
+		$data = $this->db->table('cart')
+			->select('COUNT(*) as result')
+			->where('id_customer', '=', 1)
+			->get();
+		return $data;
+	}
+
+	public function loadCart() {
+		$data = $this->db->table('cart')
+			->select('cart.id_phone, phone.id_phone, phone.img, phone.title, phone.price, phone.quantity')
+			->innerJoin('phone', 'cart.id_phone = phone.id_phone')
+			->get();
+		return $data;
+	}
 }
 
 ?>
