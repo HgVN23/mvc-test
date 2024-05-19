@@ -25,10 +25,10 @@
 		+ [x] Cập nhật số lượng sản phẩm
 	+ Trang Thanh toán:
 		+ [x] Hiển thị sản phẩm sẽ được thanh toán
-		+ [ ] Thanh toán
-		+ [ ] Tạo hóa đơn
+		+ [x] Thanh toán
+		+ [x] Tạo hóa đơn
 		+ [ ] Trừ đi số lượng hàng trong kho
-	+ [ ] Trang Lịch sử đặt hàng
+	+ [x] Trang Lịch sử đặt hàng
 
 # Bug đã biết
 - [ ] Cập nhật hàng trong kho sẽ làm mất ảnh cũ nếu input ảnh rỗng

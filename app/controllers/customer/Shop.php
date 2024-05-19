@@ -41,7 +41,7 @@ class Shop extends Controller {
 	}
 
 	public function order_history() {
-		// $this->data['sub_content']['listItem'] = $this->model_shop->orderHistory($id);
+		$this->data['sub_content']['listItem'] = $this->model_shop->loadBill();
 		$this->data['page_title'] = 'Trang Lịch sử đặt hàng';
 		$this->data['content'] = 'customer/order_history';
 		
@@ -71,10 +71,10 @@ class Shop extends Controller {
 	}
 
 	public function insert_checkout() {
-		$this->model_shop->addCheckout($this->model_shop->loadCart());
+		$this->model_shop->addCheckoutBill($this->model_shop->loadCart());
 
 		$response = new Response();
-		// $response->redirect('cua-hang/order_history');
+		$response->redirect('cua-hang/order_history');
 	}
 }
 

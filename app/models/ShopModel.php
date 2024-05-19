@@ -76,15 +76,43 @@ class ShopModel extends Model {
 		return $data;
 	}
 
-	public function addCheckout($data) {
+	public function addCheckoutBill($data) {
 		$max = $this->getMax()[0]["max"] + 1;
+		$sum = 0;
+
 		foreach($data as $item) {
 			$item["id_checkout"] = $max;
 			$item["total"] = $item["price"]*$item["c_quantity"];
-			$item["status"] = 'Đang xử lý';
-			// Cắt array hay j đó ở đây....
+			unset($item["img"]);
+			unset($item["title"]);
+			unset($item["price"]);
+			unset($item["quantity"]);
+
 			$this->db->table('checkout')->insert($item);
+			$sum += $item["total"];
 		}
+		$temp = [
+			"id_checkout" => $max,
+			"sum" => $sum,
+			"id_customer" => 1,
+			"status" => 0
+		];
+
+		$this->db->table('bill')->insert($temp);
+
+		$this->db->table('cart')
+			->where('id_customer', '=', 1)
+			->delete();
+	}
+
+	public function loadBill() {
+		$data = $this->db->table('bill')
+			->select('bill.*, checkout.id_checkout, checkout.id_phone, checkout.c_quantity, phone.id_phone, phone.title')
+			->innerJoin('checkout', 'bill.id_checkout = checkout.id_checkout')
+			->innerJoin('phone', 'checkout.id_phone = phone.id_phone')
+			->orderBy('id_bill', 'DESC')
+			->get();
+		return $data;
 	}
 }
 

@@ -17,29 +17,44 @@
 					<table cellspacing="0" class="shop_table cart">
 						<thead>
 							<tr>
-								<th class="product-thumbnail">Mã đơn hàng</th>
-								<th class="product-name">Sản phẩm</th>
-								<th class="product-price">Thành tiền</th>
-								<th class="product-remove">Trạng thái</th>
+								<th>Mã đơn hàng</th>
+								<th>Sản phẩm</th>
+								<th>Thành tiền</th>
+								<th>Người bán</th>
+								<th>Trạng thái</th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php
-								foreach($cart as $item) {
-									echo '
-										<tr class="cart_item">
-											<td>
-												
-											</td>
-											<td class="product-name">
-												<a href="'._WEB_ROOT.'/cua-hang/single_product/'.$item["id_phone"].'">'.$item["title"].'</a> <strong class="product-quantity">× '.$item["c_quantity"].'</strong>
-											</td>
-											<td class="product-total">
-												<span class="sum amount">'.$item["price"]*$item["c_quantity"].'</span>
-											</td>
-										</tr>
-									';
-								};
+								$id_checkout = 0;
+								foreach($listItem as $item) {
+									$tempItem = '';
+
+									if($id_checkout != $item["id_checkout"]) {
+										$id_checkout = $item["id_checkout"];
+										echo '
+											<tr class="cart_item">
+												<td>#'.$item["id_checkout"].'</td>
+												<td class="product-name">
+										';
+										foreach($listItem as $itemTemp) {
+											if($id_checkout == $itemTemp["id_checkout"])
+												$tempItem = $tempItem.'
+													<a href="'._WEB_ROOT.'/cua-hang/single_product/'.$itemTemp["id_phone"].'">'.$itemTemp["title"].'</a>
+													<strong class="product-quantity">× '.$itemTemp["c_quantity"].'</strong>
+													<hr>
+												';
+										}
+										echo $tempItem;
+										echo '
+												</td>
+												<td>'.$item["sum"].'</span></td>
+												<td></td>
+												<td>'.$item["status"].'</span></td>
+											</tr>
+										';
+									}
+								}
 							?>
 						</tbody>
 					</table>

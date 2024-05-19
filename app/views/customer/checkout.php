@@ -84,7 +84,7 @@
 
 										<div class="form-row place-order">
 											<form action="'._WEB_ROOT.'/cua-hang/insert_checkout" method="POST">
-												<button type="submit" class="button">Thanh toán (chưa hoàn thiện)</button>
+												<button type="submit" class="button">Thanh toán</button>
 											</form>
 
 										</div>
