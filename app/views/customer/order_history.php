@@ -42,15 +42,34 @@
 												$tempItem = $tempItem.'
 													<a href="'._WEB_ROOT.'/cua-hang/single_product/'.$itemTemp["id_phone"].'">'.$itemTemp["title"].'</a>
 													<strong class="product-quantity">× '.$itemTemp["c_quantity"].'</strong>
-													<hr>
+													<br>
 												';
 										}
 										echo $tempItem;
 										echo '
 												</td>
-												<td>'.$item["sum"].'</span></td>
-												<td></td>
-												<td>'.$item["status"].'</span></td>
+												<td>'.$item["sum"].'</td>
+												<td>'.$item["name"].'</td>
+												<td>
+										';
+										switch($item["status"]) {
+											case 0:
+												echo '<button class="btn btn-secondary rounded-pill p-4">Đang xử lý</button>';
+												break;
+											case 1:
+												echo '<button class="btn btn-primary rounded-pill p-4">Đang giao hàng</button>';
+												break;
+											case 2:
+												echo '<button class="btn btn-success rounded-pill p-4">Đã giao hàng</button>';
+												break;
+											case 3:
+												echo '<button class="btn btn-danger rounded-pill p-4">Hủy</button>';
+												break;
+											default:
+												break;
+										}
+										echo '
+												</td>
 											</tr>
 										';
 									}

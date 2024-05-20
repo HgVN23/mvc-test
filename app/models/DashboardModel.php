@@ -15,8 +15,24 @@ class DashboardModel extends Model {
 		return 'id_phone';
 	}
 
+	public function count0() {
+		$data = $this->db->table('bill')
+			->select('COUNT(status) AS count')
+			->where('status', '=', 0)
+			->get();
+		return $data;
+	}
+
+	public function count1() {
+		$data = $this->db->table('bill')
+			->select('COUNT(status) AS count')
+			->where('status', '=', 1)
+			->get();
+		return $data;
+	}
+
 	public function getMax() {
-		$data = $this->db->table($this->__table)->select('max(id_phone) as max')->get();
+		$data = $this->db->table($this->__table)->select('MAX(id_phone) AS max')->get();
 		return $data;
 	}
 
@@ -65,6 +81,26 @@ class DashboardModel extends Model {
 			->get();
 		echo $data[0]["img"];
 	}*/
+
+	public function loadBill() {
+		$data = $this->db->table('bill')
+			->select('bill.*, checkout.id_checkout, checkout.id_phone, checkout.c_quantity, phone.id_phone, phone.title, customer.id_customer, customer.name AS c_name, admin.id_admin, admin.name AS a_name')
+			->innerJoin('checkout', 'bill.id_checkout = checkout.id_checkout')
+			->innerJoin('phone', 'checkout.id_phone = phone.id_phone')
+			->innerJoin('customer', 'bill.id_customer = customer.id_customer')
+			->innerJoin('admin', 'bill.id_admin = admin.id_admin')
+			->orderBy('id_bill', 'DESC')
+			->get();
+		return $data;
+	}
+
+	public function editOrder() {
+		$request = new Request();
+		$data = $request->getFields();
+		$this->db->table('bill')
+			->where('id_bill', '=', $data["id_bill"])
+			->update($data);
+	}
 }
 
 ?>

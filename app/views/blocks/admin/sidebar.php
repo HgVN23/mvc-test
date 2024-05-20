@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 	<!-- Sidebar - Brand -->
-	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="quan-tri">
+	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo $linkGo ?>">
 		<div class="sidebar-brand-icon rotate-n-15">
 			<i class="fas fa-laugh-wink"></i>
 		</div>
@@ -12,7 +12,6 @@
 	<!-- Divider -->
 	<hr class="sidebar-divider my-0">
 
-	<!-- Nav Item - Dashboard -->
 	<li class="nav-item">
 		<a class="nav-link" href="<?php echo $linkGo ?>">
 			<i class="fas fa-fw fa-tachometer-alt"></i>
@@ -27,6 +26,16 @@
 		<a class="nav-link" href="<?php echo $linkGo ?>storage">
 			<i class="fas fa-fw fa-archive"></i>
 			<span>Kho sản phẩm</span>
+		</a>
+	</li>
+
+	<!-- Divider -->
+	<hr class="sidebar-divider my-0">
+
+	<li class="nav-item">
+		<a class="nav-link" href="<?php echo $linkGo ?>list_order">
+			<i class="fas fa-fw fa-book"></i>
+			<span>Danh sách đơn hàng</span>
 		</a>
 	</li>
 

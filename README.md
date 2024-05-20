@@ -5,7 +5,7 @@
 - Admin (localhost/mvc-test/dashboard):
 	+ [ ] Login
 	+ [x] Quản lý sản phẩm (CRUD)
-	+ [ ] Quản lý đơn hàng
+	+ [x] Quản lý đơn hàng
 
 - Khách hàng (localhost/mvc-test/):
 	+ [ ] Login
@@ -27,7 +27,6 @@
 		+ [x] Hiển thị sản phẩm sẽ được thanh toán
 		+ [x] Thanh toán
 		+ [x] Tạo hóa đơn
-		+ [ ] Trừ đi số lượng hàng trong kho
 	+ [x] Trang Lịch sử đặt hàng
 
 # Bug đã biết

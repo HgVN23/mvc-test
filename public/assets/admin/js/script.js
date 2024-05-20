@@ -6,14 +6,16 @@ function orderDesc() {
 }
 
 // Khởi tạo
-const form = document.querySelector('.mainForm');
-const idInput = form.querySelector('#id_phone');
-const imgInput = form.querySelector('#imgPreview');
-const titleInput = form.querySelector('#title');
-const brandInput = form.querySelector('#id_brand');
-const infoInput = form.querySelector('#info');
-const priceInput = form.querySelector('#price');
-const quantityInput = form.querySelector('#quantity');
+if(document.querySelector('.mainForm')) {
+	const form = document.querySelector('.mainForm');
+	const idInput = form.querySelector('#id_phone');
+	const imgInput = form.querySelector('#imgPreview');
+	const titleInput = form.querySelector('#title');
+	const brandInput = form.querySelector('#id_brand');
+	const infoInput = form.querySelector('#info');
+	const priceInput = form.querySelector('#price');
+	const quantityInput = form.querySelector('#quantity');
+}
 
 // Preview ảnh khi input
 if(document.querySelector('input#img')) {
@@ -53,4 +55,8 @@ function editProduct(tr) {
 function removeProduct(id) {
 	document.querySelector('#idProduct').innerHTML = id.value;
 	document.querySelector('button[name="remove"]').value = id.value;
+}
+
+function updateStatus(status) {
+	status.querySelector('button').hidden = false;
 }

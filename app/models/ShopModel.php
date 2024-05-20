@@ -95,6 +95,7 @@ class ShopModel extends Model {
 			"id_checkout" => $max,
 			"sum" => $sum,
 			"id_customer" => 1,
+			"id_admin" => 1,
 			"status" => 0
 		];
 
@@ -107,9 +108,10 @@ class ShopModel extends Model {
 
 	public function loadBill() {
 		$data = $this->db->table('bill')
-			->select('bill.*, checkout.id_checkout, checkout.id_phone, checkout.c_quantity, phone.id_phone, phone.title')
+			->select('bill.*, checkout.id_checkout, checkout.id_phone, checkout.c_quantity, phone.id_phone, phone.title, admin.id_admin, admin.name')
 			->innerJoin('checkout', 'bill.id_checkout = checkout.id_checkout')
 			->innerJoin('phone', 'checkout.id_phone = phone.id_phone')
+			->innerJoin('admin', 'bill.id_admin = admin.id_admin')
 			->orderBy('id_bill', 'DESC')
 			->get();
 		return $data;
