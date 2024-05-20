@@ -28,6 +28,6 @@
 		+ [x] Thanh toán
 		+ [x] Tạo hóa đơn
 	+ [x] Trang Lịch sử đặt hàng
-# 
-> [!Ghi chú]
+
+> [!NOTE]
 > Phần Import ảnh vào sản phẩm có mỗi tên file ảnh lưu vào db. Ảnh cần phải lưu thủ công vào `public/assets/img`
