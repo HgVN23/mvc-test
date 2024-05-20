@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2024 at 06:57 AM
+-- Generation Time: May 20, 2024 at 11:16 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -79,11 +79,10 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`id_bill`, `id_checkout`, `sum`, `id_customer`, `id_admin`, `status`) VALUES
-(6, 1, 20000000, 1, 1, 3),
-(7, 2, 55000000, 1, 1, 2),
-(8, 3, 5100000, 1, 1, 1),
-(9, 4, 34100000, 1, 1, 0),
-(10, 5, 6500000, 1, 1, 0);
+(15, 1, 11000000, 1, 1, 1),
+(16, 2, 13500000, 1, 1, 0),
+(17, 3, 45500000, 1, 1, 3),
+(18, 4, 100000, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -134,17 +133,13 @@ CREATE TABLE `checkout` (
 --
 
 INSERT INTO `checkout` (`id_checkout`, `id_phone`, `c_quantity`, `total`) VALUES
-(1, 1, 3, 13500000),
+(1, 1, 1, 4500000),
 (1, 4, 1, 6500000),
 (2, 1, 3, 13500000),
-(2, 3, 7, 35000000),
-(2, 4, 1, 6500000),
-(3, 2, 1, 100000),
-(3, 3, 1, 5000000),
-(4, 1, 2, 9000000),
-(4, 2, 1, 100000),
-(4, 3, 5, 25000000),
-(5, 4, 1, 6500000);
+(3, 1, 2, 9000000),
+(3, 3, 6, 30000000),
+(3, 4, 1, 6500000),
+(4, 2, 1, 100000);
 
 -- --------------------------------------------------------
 
@@ -194,7 +189,7 @@ INSERT INTO `phone` (`id_phone`, `img`, `title`, `id_brand`, `info`, `price`, `q
 (1, 'product-1.jpg', 'iPhone 14', 1, 'a', 4500000, 4),
 (2, 'product-2.jpg', 'Galaxy S15', 2, 'a', 100000, 1),
 (3, 'product-3.jpg', 'Galaxy S17 Future', 2, 'a', 5000000, 11),
-(4, 'product-4.jpg', 'iPhone 20 x4 Cam', 1, 'a', 6500000, 1);
+(4, 'product-4.jpg', 'iPhone 20', 1, 'Test', 6500000, 1);
 
 --
 -- Indexes for dumped tables
@@ -270,7 +265,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `id_bill` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_bill` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `brand`
@@ -305,7 +300,6 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `bill`
   ADD CONSTRAINT `FK_bill_admin` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`),
-  ADD CONSTRAINT `FK_bill_checkout` FOREIGN KEY (`id_checkout`) REFERENCES `checkout` (`id_checkout`),
   ADD CONSTRAINT `Fk_bill_customer` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_customer`);
 
 --

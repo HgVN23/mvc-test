@@ -89,3 +89,13 @@
 		</div>
 	</div>
 </div>
+
+<!-- Fake tag -->
+<div class="mainForm hidden"></div>
+<div id="id_phone" class="hidden"></div>
+<div id="imgPreview" class="hidden"></div>
+<div id="title" class="hidden"></div>
+<div id="id_brand" class="hidden"></div>
+<div id="info" class="hidden"></div>
+<div id="price" class="hidden"></div>
+<div id="quantity" class="hidden"></div>

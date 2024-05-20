@@ -61,14 +61,18 @@ class DashboardModel extends Model {
 		$this->db->table('cart')
 			->where('id_phone', '=', $request->getFields()["remove"])
 			->delete();
+		$this->db->table('checkout')
+			->where('id_phone', '=', $request->getFields()["remove"])
+			->delete();
 		$this->db->table($this->__table)
 			->where('id_phone', '=', $request->getFields()["remove"])
 			->delete();
 	}
 
-	public function editItem() {
+	public function editItem($img) {
 		$request = new Request();
 		$data = $request->getFields();
+		$data["img"] = $img;
 		$this->db->table($this->__table)
 			->where('id_phone', '=', $data["id_phone"])
 			->update($data);

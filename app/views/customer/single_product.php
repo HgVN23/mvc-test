@@ -32,9 +32,34 @@
 								<div class="product-inner-price">
 									<ins><?php echo $item[0]["price"] ?></ins>
 								</div>    
-								
-								<form action="<?php echo _WEB_ROOT ?>/cua-hang/insert_cart/<?php echo $item[0]["id_phone"] ?>" class="cart">
-									<button class="add_to_cart_button" type="submit">Thêm vào giỏ</button>
+								<?php
+									$check = false;
+									foreach($cart as $itemC) {
+										if($itemC["id_phone"] == $item[0]["id_phone"]) {
+											$check = true;
+											break;
+										}
+									}
+									if(!$check) {
+										$action = 'insert_cart/'.$item[0]["id_phone"];
+										$button = '
+											<button class="add_to_cart_button">
+												<i class="fa fa-shopping-cart"></i>
+												Thêm vào giỏ
+											</button>
+										';
+									} else {
+										$action = 'delete_cart';
+										$button = '
+											<button class="add_to_cart_button" name="remove" value="'.$item[0]["id_phone"].'">
+												<i class="fa fa-shopping-cart"></i>
+												Xóa khỏi giỏ
+											</button>
+										';
+									}
+								?>
+								<form action="<?php echo _WEB_ROOT.'/cua-hang/'.$action ?>" class="cart">
+									<?php echo $button ?>
 								</form>   
 								
 								<div class="product-inner-category">
@@ -43,7 +68,7 @@
 								
 								<div role="tabpanel">
 									<ul class="product-tab" role="tablist">
-										<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Mô tả</a></li>
+										<li role="presentation" class="active"><a>Mô tả</a></li>
 									</ul>
 									<div class="tab-content">
 										<div role="tabpanel" class="tab-pane fade in active" id="home">

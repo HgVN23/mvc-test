@@ -6,16 +6,15 @@ function orderDesc() {
 }
 
 // Khởi tạo
-if(document.querySelector('.mainForm')) {
-	const form = document.querySelector('.mainForm');
-	const idInput = form.querySelector('#id_phone');
-	const imgInput = form.querySelector('#imgPreview');
-	const titleInput = form.querySelector('#title');
-	const brandInput = form.querySelector('#id_brand');
-	const infoInput = form.querySelector('#info');
-	const priceInput = form.querySelector('#price');
-	const quantityInput = form.querySelector('#quantity');
-}
+const form = document.querySelector('.mainForm');
+const idInput = form.querySelector('#id_phone');
+const imgInput = form.querySelector('#imgPreview');
+const titleInput = form.querySelector('#title');
+const brandInput = form.querySelector('#id_brand');
+const infoInput = form.querySelector('#info');
+const priceInput = form.querySelector('#price');
+const quantityInput = form.querySelector('#quantity');
+
 
 // Preview ảnh khi input
 if(document.querySelector('input#img')) {
@@ -35,7 +34,7 @@ document.querySelectorAll('.resetForm').forEach(e => {
 	e.addEventListener('click', resetForm);
 });
 function resetForm() {
-	form.action = form.action.replace('update_storage', 'insert_storage');
+	form.action = form.action.replace(/update_storage\/.*$/g, 'insert_storage');
 	form.querySelector('img').src = "";
 	form.querySelector('button[type="reset"]').click();
 }
@@ -48,8 +47,11 @@ function editProduct(tr) {
 	infoInput.value = tr.querySelector('td:nth-child(5)').textContent;
 	priceInput.value = tr.querySelector('td:nth-child(6)').textContent;
 	quantityInput.value = tr.querySelector('td:nth-child(7)').textContent;
-	
-	form.action = form.action.replace('insert_storage', 'update_storage');
+
+	const regex = /\/([^/\.]+\.[^/\.]+)$/;
+	const match = imgInput.src.match(regex);
+
+	form.action = form.action.replace('insert_storage', `update_storage/${match[1]}`);
 }
 
 function removeProduct(id) {

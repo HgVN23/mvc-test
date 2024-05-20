@@ -13,9 +13,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="woocommerce">
+				<div class="woocommerce table-responsive">
 					<table cellspacing="0" class="shop_table cart">
-						<thead>
+						<thead class="text-nowrap">
 							<tr>
 								<th>Mã đơn hàng</th>
 								<th>Sản phẩm</th>
@@ -24,55 +24,63 @@
 								<th>Trạng thái</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="text-nowrap">
 							<?php
-								$id_checkout = 0;
-								foreach($listItem as $item) {
-									$tempItem = '';
+								if(!empty($listItem)) {
+									$id_checkout = 0;
+									foreach($listItem as $item) {
+										$tempItem = '';
 
-									if($id_checkout != $item["id_checkout"]) {
-										$id_checkout = $item["id_checkout"];
-										echo '
-											<tr class="cart_item">
-												<td>#'.$item["id_checkout"].'</td>
-												<td class="product-name">
-										';
-										foreach($listItem as $itemTemp) {
-											if($id_checkout == $itemTemp["id_checkout"])
-												$tempItem = $tempItem.'
-													<a href="'._WEB_ROOT.'/cua-hang/single_product/'.$itemTemp["id_phone"].'">'.$itemTemp["title"].'</a>
-													<strong class="product-quantity">× '.$itemTemp["c_quantity"].'</strong>
-													<br>
-												';
+										if($id_checkout != $item["id_checkout"]) {
+											$id_checkout = $item["id_checkout"];
+											echo '
+												<tr class="cart_item">
+													<td>#'.$item["id_checkout"].'</td>
+													<td class="product-name">
+											';
+											foreach($listItem as $itemTemp) {
+												if($id_checkout == $itemTemp["id_checkout"])
+													$tempItem = $tempItem.'
+														<a href="'._WEB_ROOT.'/cua-hang/single_product/'.$itemTemp["id_phone"].'">'.$itemTemp["title"].'</a>
+														<strong class="product-quantity">× '.$itemTemp["c_quantity"].'</strong>
+														<br>
+													';
+											}
+											echo $tempItem;
+											echo '
+													</td>
+													<td>'.$item["sum"].'</td>
+													<td>'.$item["name"].'</td>
+													<td>
+											';
+											switch($item["status"]) {
+												case 0:
+													echo '<button class="btn btn-secondary rounded-pill p-4">Đang xử lý</button>';
+													break;
+												case 1:
+													echo '<button class="btn btn-primary rounded-pill p-4">Đang giao hàng</button>';
+													break;
+												case 2:
+													echo '<button class="btn btn-success rounded-pill p-4">Đã giao hàng</button>';
+													break;
+												case 3:
+													echo '<button class="btn btn-danger rounded-pill p-4">Hủy</button>';
+													break;
+												default:
+													break;
+											}
+											echo '
+													</td>
+												</tr>
+											';
 										}
-										echo $tempItem;
-										echo '
-												</td>
-												<td>'.$item["sum"].'</td>
-												<td>'.$item["name"].'</td>
-												<td>
-										';
-										switch($item["status"]) {
-											case 0:
-												echo '<button class="btn btn-secondary rounded-pill p-4">Đang xử lý</button>';
-												break;
-											case 1:
-												echo '<button class="btn btn-primary rounded-pill p-4">Đang giao hàng</button>';
-												break;
-											case 2:
-												echo '<button class="btn btn-success rounded-pill p-4">Đã giao hàng</button>';
-												break;
-											case 3:
-												echo '<button class="btn btn-danger rounded-pill p-4">Hủy</button>';
-												break;
-											default:
-												break;
-										}
-										echo '
-												</td>
-											</tr>
-										';
 									}
+								} else {
+									echo '
+										<tr>
+											<td class="h4" colspan="5">Lịch sử đặt hàng trống</td>
+										</tr>
+									';
 								}
 							?>
 						</tbody>

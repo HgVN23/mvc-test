@@ -13,9 +13,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="woocommerce">
+				<div class="woocommerce table-responsive">
 					<table cellspacing="0" class="shop_table cart">
-						<thead>
+						<thead class="text-nowrap">
 							<tr>
 								<th class="product-thumbnail">Ảnh</th>
 								<th class="product-name">Sản phẩm</th>
@@ -25,7 +25,7 @@
 								<th class="product-remove">Bỏ hàng</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="text-nowrap">
 							<?php
 								foreach($cart as $item) {
 									echo '
@@ -81,6 +81,7 @@
 							?>
 						</tbody>
 					</table>
+				</div>
 					<?php
 						if(!empty($cart)) {
 							echo '
@@ -100,7 +101,6 @@
 							';
 						};
 					?>
-				</div>
 			</div>
 		</div>
 	</div>

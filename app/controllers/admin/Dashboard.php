@@ -45,8 +45,8 @@ class Dashboard extends Controller {
 		$response->redirect('quan-tri/storage');
 	}
 
-	public function update_storage() {
-		$this->model_dashboard->editItem();
+	public function update_storage($url) {
+		$this->model_dashboard->editItem($url);
 
 		$response = new Response();
 		$response->redirect('quan-tri/storage');
