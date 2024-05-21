@@ -17,7 +17,7 @@ class HomeModel extends Model {
 
 	public function loadItem() {
 		$data = $this->db->table($this->__table)
-			->select('id_phone, img, title, price')
+			->select('id_phone, img, title, price, quantity')
 			->get();
 		return $data;
 	}

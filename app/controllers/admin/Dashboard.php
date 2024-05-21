@@ -1,6 +1,8 @@
 <?php
 
 class Dashboard extends Controller {
+	const INPROGESS = 0;
+	const INDELIVER = 1;
 	public $model_dashboard;
 	public $data = [];
 
@@ -10,8 +12,8 @@ class Dashboard extends Controller {
 
 	public function index() {
 		$this->data['sub_content']['title'] = 'Trang Quản trị';
-		$this->data['sub_content']['count0'] = $this->model_dashboard->count0();
-		$this->data['sub_content']['count1'] = $this->model_dashboard->count1();
+		$this->data['sub_content']['inProgress'] = $this->model_dashboard->count(self::INPROGESS);
+		$this->data['sub_content']['inDeliver'] = $this->model_dashboard->count(self::INDELIVER);
 		$this->data['page_title'] = 'Trang Quản trị';
 		$this->data['content'] = 'admin/dashboard';
 		

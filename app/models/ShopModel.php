@@ -1,7 +1,7 @@
 <?php
 
 class ShopModel extends Model {
-	private $__table = 'phone';
+	public $__table = 'phone';
 
 	function tableFill() {
 		return $this->__table;
@@ -39,26 +39,27 @@ class ShopModel extends Model {
 		return $data;
 	}
 
-	public function addCart($id) {
+	public function addCart($id, $userID) {
 		$data = [
-			"id_customer" => 1,
+			"id_customer" => $userID,
 			"id_phone" => $id,
 			"c_quantity" => 1
 		];
 		$this->db->table('cart')->insert($data);
 	}
 
-	public function removeCart() {
-		$request = new Request();
+	public function removeCart($request) {
 		$this->db->table('cart')
 			->where('id_phone', '=', $request->getFields()["remove"])
 			->delete();
 	}
 
 	public function editCart($data) {
-		$this->db->table('cart')
-			->where('id_phone', '=', $data["id_phone"])
-			->update($data);
+		if (!empty($data["id_phone"])) {
+			$this->db->table('cart')
+				->where('id_phone', '=', $data["id_phone"])
+				->update($data);
+		}
 	}
 
 	public function count() {
@@ -76,7 +77,7 @@ class ShopModel extends Model {
 		return $data;
 	}
 
-	public function addCheckoutBill($data) {
+	public function addCheckoutBill($data, $userID) {
 		$max = $this->getMax()[0]["max"] + 1;
 		$sum = 0;
 
@@ -94,7 +95,7 @@ class ShopModel extends Model {
 		$temp = [
 			"id_checkout" => $max,
 			"sum" => $sum,
-			"id_customer" => 1,
+			"id_customer" => $userID,
 			"id_admin" => 1,
 			"status" => 0
 		];
@@ -102,7 +103,7 @@ class ShopModel extends Model {
 		$this->db->table('bill')->insert($temp);
 
 		$this->db->table('cart')
-			->where('id_customer', '=', 1)
+			->where('id_customer', '=', $userID)
 			->delete();
 	}
 

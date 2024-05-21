@@ -89,14 +89,19 @@
 										break;
 									}
 								}
-								if(!$check) {
-									$action = 'insert_cart/'.$item["id_phone"];
-									$button = '<button style="all: unset; cursor: pointer;">Thêm vào giỏ</button>';
-								} else {
-									$action = 'delete_cart';
-									$button = '<button style="all: unset; cursor: pointer;" name="remove" value="'.$item["id_phone"].'">Xóa khỏi giỏ</button>';
+								if($item["quantity"] == 0) {
+									$action = '';
+									$button = '<button style="all: unset; cursor: pointer;" disabled>Hết hàng</button>';
 								}
-
+								else {
+									if(!$check) {
+										$action = 'insert_cart/'.$item["id_phone"];
+										$button = '<button style="all: unset; cursor: pointer;">Thêm vào giỏ</button>';
+									} else {
+										$action = 'delete_cart';
+										$button = '<button style="all: unset; cursor: pointer;" name="remove" value="'.$item["id_phone"].'">Xóa khỏi giỏ</button>';
+									}
+								};
 								echo '
 									<div class="single-product">
 										<div class="product-f-image">

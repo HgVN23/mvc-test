@@ -15,18 +15,10 @@ class DashboardModel extends Model {
 		return 'id_phone';
 	}
 
-	public function count0() {
+	public function count($status) {
 		$data = $this->db->table('bill')
 			->select('COUNT(status) AS count')
-			->where('status', '=', 0)
-			->get();
-		return $data;
-	}
-
-	public function count1() {
-		$data = $this->db->table('bill')
-			->select('COUNT(status) AS count')
-			->where('status', '=', 1)
+			->where('status', '=', $status)
 			->get();
 		return $data;
 	}

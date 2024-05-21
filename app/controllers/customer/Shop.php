@@ -3,11 +3,15 @@
 class Shop extends Controller {
 	public $model_shop;
 	public $data = [];
+	public $response;
+	public $request;
 
 	public function __construct() {
 		$this->model_shop = $this->model('ShopModel');
 		$this->data['sub_content']['count'] = $this->model_shop->count();
 		$this->data['sub_content']['cart'] = $this->model_shop->loadCart();
+		$this->response = new Response();
+		$this->request = new Request();
 	}
 
 	public function index() {
@@ -49,32 +53,26 @@ class Shop extends Controller {
 	}
 
 	public function insert_cart($id) {
-		$this->model_shop->addCart($id);
-
-		$response = new Response();
-		$response->redirect($_SERVER['HTTP_REFERER']);
+		$this->model_shop->addCart($id, 1);
+		return $this->response->redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function delete_cart() {
-		$this->model_shop->removeCart();
+		$this->model_shop->removeCart($this->request);
 
-		$response = new Response();
-		$response->redirect($_SERVER['HTTP_REFERER']);
+		$this->response->redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function update_cart() {
-		$request = new Request();
-		$this->model_shop->editCart($request->getFields());
+		$this->model_shop->editCart($this->request->getFields());
 
-		$response = new Response();
-		$response->redirect('cua-hang/cart');
+		$this->response->redirect('cua-hang/cart');
 	}
 
 	public function insert_checkout() {
-		$this->model_shop->addCheckoutBill($this->model_shop->loadCart());
+		$this->model_shop->addCheckoutBill($this->model_shop->loadCart(), 1);
 
-		$response = new Response();
-		$response->redirect('cua-hang/order_history');
+		$this->response->redirect('cua-hang/order_history');
 	}
 }
 
